@@ -1,49 +1,61 @@
 import React from "react";
 import "./Table.scss";
+import helper from "../../Utils/helper";
 
-const Table = () => {
+const Table = ({ data, heading }) => {
   return (
     <div className="table-container">
       <table>
-        <tr className="heading">
-          <th>Deparment/Role Name</th>
-          <th>Access Level</th>
-          <th>No of Members</th>
-          <th>Last updated</th>
-          <th> to see </th>
-        </tr>
-        <tr>
-          <td>
-            <div className="role">
-              <img src="asset/svg/circle.svg" alt="see" />
-              Management Team
-            </div>
-          </td>
-          <td>
-            <button className="access"> All access</button>
-          </td>
-          <td>4</td>
-          <td>1 min ago</td>
-          <td>
-            <img src="asset/svg/eye.svg" alt="see" />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div className="role">
-              <img src="asset/svg/circle.svg" alt="see" />
-              Management Team
-            </div>
-          </td>
-          <td>
-            <button className="restricted"> Restricted</button>
-          </td>
-          <td>4</td>
-          <td>1 min ago</td>
-          <td>
-            <img src="asset/svg/eye.svg" alt="see" />
-          </td>
-        </tr>
+        <tbody>
+          <tr className="heading">
+            {heading.map((element, index) => {
+              return element.include ? (
+                <th>
+                  {" "}
+                  {element.hidden ? (
+                    <p hidden> {element.head}</p>
+                  ) : (
+                    element.head
+                  )}{" "}
+                </th>
+              ) : null;
+            })}
+          </tr>
+          {data.map((element, index) => {
+            return (
+              <tr>
+                <td>
+                  <div className="role">
+                    {element.isCircle ? (
+                      <img src="asset/svg/circle.svg" alt="see" />
+                    ) : (
+                      <img src="asset/svg/add.svg" alt="see" />
+                    )}
+                    {element.role}
+                  </div>
+                </td>
+                <td>{helper.chooseAccessButtons(element)}</td>
+                <td>
+                  {element.isMembers
+                    ? element.members
+                    : helper.formatSummary(element.summary)}
+                </td>
+                <td>{element.updated}</td>
+                <td>
+                  {element.isToggle ? (
+                    <label class="switch">
+                      {" "}
+                      <input type="checkbox" checked />{" "}
+                      <span className="slider round"></span>{" "}
+                    </label>
+                  ) : (
+                    <img src="asset/svg/eye.svg" alt="see" />
+                  )}
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
     </div>
   );

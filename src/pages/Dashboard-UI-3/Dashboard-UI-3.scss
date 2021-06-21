@@ -1,0 +1,418 @@
+@mixin display-config($justify, $align, $direction) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin font-config($size, $weight, $color, $family) {
+    font-size: $size;
+    font-weight: $weight;
+    color: $color;
+    font-family: $family;
+}
+
+.header {
+    @include display-config(space-between, center, row);
+
+    &-logo {
+        width: 300px;
+    }
+
+    &-content {
+        @include display-config(space-around, center, row);
+        width: 20%;
+
+        &-profile {
+            @include display-config(space-around, center, row);
+            @include font-config(15px, bold, black, "roboto");
+            width: 40%;
+        }
+
+        &-action {
+            @include display-config(space-around, center, row);
+            width: 60%;
+        }
+    }
+}
+
+.body {
+    @include display-config(center, normal, row);
+    &-navigation {
+    @include font-config(15px, bold, #828282, "roboto");
+        width: 16%;
+        letter-spacing: 1px;
+        background-color: #FCFBFF;
+        margin-top: 1%;
+
+        &-element {
+            height: 60px;
+            width: 100%;
+
+            &-sub {
+                margin-left: 7%;
+                @include display-config(flex-start, center, row);
+
+                &-text {
+                    padding-left: 20px;
+                }
+            }
+        }
+    }
+
+    &-content {
+        @include font-config(15px, bold, #828282, "roboto");
+        width: 84%;
+
+        &-box {
+            //just shorten this margin code 
+            margin: 3%;
+            margin-right: 6%;
+            margin-top: 1%;
+        }
+    }
+}
+
+.status {
+    @include display-config(space-between, center, row);
+    width: 100%;
+    height: 7vh;
+    border-bottom: #CFD3DA solid 1px;
+
+    &-actions {
+        @include display-config(space-between, center, row); 
+        width: 29%;
+        
+        &-element {
+            @include display-config(space-between, center, row); 
+        }
+
+        &-element h1 {
+
+            @include font-config(16px,bold, black ,"roboto");
+            letter-spacing: 1px;
+            padding-left: 5px;
+        }
+    }
+
+    &-state {
+        @include display-config(space-between, center, row);
+        color: black !important;
+        
+        &-img {
+            padding-right: 20px;
+        }
+    }
+}
+
+.colored {
+    color: #673AB7 !important;
+}
+
+.container {
+    width: 92%;
+    margin-left: 8%;
+    margin-top: 3%;
+}
+
+.action {
+    @include display-config(space-between, center, row);
+    width: 25%;
+    height: 7vh;
+}
+
+
+.role {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 80%;
+    gap: 30px;
+    margin-left: 10%;
+}
+
+.summary {
+
+    &-element {
+        display: inline-block;
+
+        &-text {
+            margin: 0 auto;
+            display: inline;
+            text-align: center;
+            padding-right: 5px;
+        }
+    }
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #27AE60;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #27AE60;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+  .expandable-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width:100%
+  }
+
+  .expand-content {
+    @include display-config(center, center, row);
+      gap: 20px;
+
+      &-text {
+        @include display-config(flex-start, flex-start, column);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        color: black !important;
+        letter-spacing: 1px;
+      }
+  }
+
+  .extras {
+      display: flex;
+      flex-direction: row;
+      width: 50%;
+  }
+
+  .update {
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .update > p {
+      color: black !important;
+  }
+
+  .toggle {
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .options {
+      display: flex;
+      flex-direction: row;
+      margin-left: 15%;
+      color: black !important;
+  }
+
+  .access-controls > h1 {
+      font-size: 16px;
+      letter-spacing: 1px;      
+  }
+
+  .access-controls {
+      display: flex;
+      flex-direction: column; 
+      margin-right: 5%;
+      
+      &-element {
+        @include display-config(flex-start, center, row);
+          gap: 20px;
+      }
+  }
+
+  .text > p {
+    color: #B7ACAC !important;
+    font-size: 14px;
+}
+
+.text > h1 {
+    font-size: 14px;
+}
+  .permission-controls {
+    display: flex;
+    flex-direction: column; 
+    
+    &-element {
+        @include display-config(flex-start, center, row);
+        gap: 20px;
+    }
+  }
+
+  .permissions-controls > h1 {
+      font-size: 16px;
+      letter-spacing: 1px;
+  }
+
+  .permissions-controls {
+      margin-left: 5%;
+  }
+
+.checkbox-container {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 15px;
+    border-radius: 2px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;   
+  }
+
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 15px;
+    width: 15px;
+    border-radius: 2px;
+    background-color: transparent;
+    border: 2px solid black;
+  }
+  
+  .checkbox-container input:checked ~ .checkmark {
+    background-color: #673AB7;
+  }
+  
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  .checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  .checkbox-container .checkmark:after {
+    left: 4px;
+    top: 2px;
+    width: 3px;
+    height: 6px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  .radio-container {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 18px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .radio-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .radio-checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 15px;
+    width: 15px;
+    border:2px solid black;
+    background-color: white;
+    border-radius: 50%;
+  }
+  
+  .radio-container:hover input ~ .radio-checkmark {
+    background-color:white;
+  }
+
+  .radio-container input:checked ~ .radio-checkmark {
+    background-color: #673AB7;
+  }
+  
+  .radio-checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  .radio-container input:checked ~ .radio-checkmark:after {
+    display: block;
+  }
+  
+  .radio-container .radio-checkmark:after {
+      top: 5px;
+      left: 5px;
+      width: 2px;
+      height: 2px;
+      border-radius: 4px solid white;
+      background: #673AB7;
+  }
+  
